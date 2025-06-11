@@ -1,3 +1,95 @@
+/*Demonstrating classes and objects concepts in C++
+
+class className {
+access_modifier:
+	//data member - variables that are defined inside a class
+
+	//member function - functions/ methods declared inside a class
+};
+for example:
+
+#include<iostream>
+using namespace std;
+class Lemayian {
+
+	int age;
+
+	void showAge() {
+		cout << "Lemayian was 25 when he started coding in C++" << age << endl;
+	}
+};
+int main() {
+	cout << "Lemayian age is: 25 "<< endl;
+}
+
+
+//Demonstrating the use of acces modifiers
+#include <iostream>
+using namespace std; // Removed <bits/stdc++.h> for simplicity
+
+// Creating a class
+class Lemayian {
+private: // Private section
+	int age; // Can only be accessed within the class
+
+public: // Public section
+	// Method to set age
+	void setAge(int a) {
+		if (a >= 0) { // Basic validation
+			age = a;
+		}
+		else {
+			cout << "Age cannot be negative!" << endl;
+		}
+	}
+
+	// Method to show age
+	void showAge() {
+		cout << "The age when Lemayian was coding cpp was : " << age << endl;
+	}
+};
+
+int main() {
+	Lemayian lema;
+
+	// Try setting age (works)
+	lema.setAge(25);
+	lema.showAge(); // Prints: The age when Lemayian was coding cpp was : 25
+
+	// Try setting invalid age (fails)
+	lema.setAge(-5); // Prints: Age cannot be negative!
+	lema.showAge(); // Still shows 25
+
+	return 0;
+}
+*/
+
+
+//Special Member functions
+
+// 1. Constructor - class members used ton initialize objects.
+#include<iostream>
+using namespace std;
+class Class {
+public:
+
+	//constructor
+	Class() {
+		cout << "Constructor is called!"<<endl;
+	}
+	//Destructor
+	~Class() {
+		cout << "Destructor is called! ";
+	}
+};
+int main() {
+	Class obj;
+	return 0;
+}
+
+
+
+
 /*
 C++ program o implement the memory management
  
@@ -518,7 +610,7 @@ int main() {
 	cout << "Postfix " << result.postfix << endl;
 	return 0;
 }
-*/
+
 //Simple arrays in c++
 #include<iostream>
 using namespace std;
