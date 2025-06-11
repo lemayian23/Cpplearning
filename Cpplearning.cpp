@@ -62,7 +62,6 @@ int main() {
 
 	return 0;
 }
-*/
 
 
 //Special Member functions
@@ -86,12 +85,32 @@ int main() {
 	Class obj;
 	return 0;
 }
+*/
+//2. Destructor
 
+#include<iostream>
+#include<string>
+using namespace std;
 
-
+class Student {
+public:
+	string name;
+	Student(string n) {
+		name = n;
+		cout << "Constructor called for " << name << endl;
+	}
+	~Student() {
+		cout << "Destructor called for "<<name << endl;
+	}
+};
+int main() {
+	Student s1 ("Venus");
+	Student s2 ("Purity");
+	return 0;
+}
 
 /*
-C++ program o implement the memory management
+C++ program to implement the memory management
  
 #include<cstring>
 #include<iostream>
