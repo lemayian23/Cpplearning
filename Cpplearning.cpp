@@ -85,7 +85,6 @@ int main() {
 	Class obj;
 	return 0;
 }
-*/
 //2. Destructor
 
 #include<iostream>
@@ -109,7 +108,7 @@ int main() {
 	return 0;
 }
 
-/*
+
 C++ program to implement the memory management
  
 #include<cstring>
@@ -724,3 +723,72 @@ int main() {
 	return 0;
 }
 */
+
+//SDT principles and Tokenizer lexer
+
+#include<iostream>
+#include<string>
+#include<vector>
+
+using namespace std;
+
+//structuure to hold token attributes
+struct Token {
+	string type;
+	string value;
+};
+
+//Tokenizer function using SDT principles
+vector<Token> tokenize(string input) {
+	vector<Token> tokens;
+	string currentToken = "";
+	int i = 0;
+
+	while (i < input.length()) {
+		char c = input[i];
+
+		//skip whitespace
+		if (isspace(c)) {
+			i++;
+			continue;
+		}
+		//Handle operators(+,*)
+		if (c == '+'|| c=='*') {
+			if (!currentToken.empty()) {
+				tokens.push_back({ (isalpha(currentToken[0]) ? "Id" : "Nm"), currentToken });
+				currentToken = "";
+			}
+			tokens.push_back({ string(1,c),string(1,c) });
+			i++; continue;
+
+		}
+		//Build Num or Id
+		if (isalnum(c)) {
+			currentToken += c;
+			i++;
+		}
+		else {
+			//End of token eg invalid character
+			if (!currentToken.empty()) {
+				tokens.push_back({ (isalpha(currentToken[0]) ? "Id" : "Num"), currentToken });
+				currentToken = "";
+			}
+			i++;
+		}
+	}
+	//Add the last token if any
+	if (!currentToken.empty()) {
+		tokens.push_back({ (isalpha(currentToken[0]) ? "Id" : "Num"), currentToken });
+	}
+	return tokens;
+}
+int main() {
+	string input = "x + 123 * y";
+	vector<Token> tokens = tokenize(input);
+
+	cout << "Tokens: " << endl;
+	for (const Token& t : tokens) {
+		cout<<"Type: "<<t.type<<",Value: "<<t.value<<endl;
+	}
+	return 0;
+}
