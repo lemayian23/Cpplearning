@@ -648,7 +648,6 @@ int main() {
 
 
 
-/*
 //Array based queue
 
 #include<iostream>
@@ -722,7 +721,6 @@ int main() {
 	cout << "Font element after dequeue: " << q.front() << endl;
 	return 0;
 }
-*/
 
 //SDT principles and Tokenizer lexer
 
@@ -790,5 +788,71 @@ int main() {
 	for (const Token& t : tokens) {
 		cout<<"Type: "<<t.type<<",Value: "<<t.value<<endl;
 	}
+	return 0;
+}
+*/
+
+/*
+Function overloading allows you to create multiple 
+functions with same name but different parameter lists.
+benefits are:
+improves code readability and reusability
+allows same function name to be used for  different data types
+
+#include<iostream>
+using namespace std;
+void print(int i) {
+	cout << "Interger:" << i << endl;
+}
+
+void print(double d) {
+	cout << "Double:" <<d<< endl;
+}
+
+void print(string s) {
+	cout << "String: " << s << endl;
+}
+
+*/
+
+/*Operator overloading allows you to redifine how operators like '+','-','=' etc
+work for user defined types(classes).
+
+
+//syntaxt(as a member function):
+
+class MyClass {
+public:
+	int value;
+	MyClass(int v) { value = v; }
+	MyClass operator+(MyClass obj) {
+		return MyClass(value + obj.value);
+	}
+};
+*/
+
+//overloading the + operator
+#include<iostream>
+using namespace std;
+
+class Complex {
+public:
+	float real, imag;
+
+	Complex(float r = 0, float i = 0) {
+		real = r; imag = i;
+	}
+	Complex operator + (Complex const& obj) {
+		return Complex(real + obj.real, imag + obj.imag);
+	}
+	void display() {
+		cout << real << "+" << imag << "i" << endl;
+	}
+};
+
+int main() {
+	Complex c1(3.0, 2.0), c2(1.5, 4.5);
+	Complex c3 = c1 + c2;
+	c3.display();
 	return 0;
 }
