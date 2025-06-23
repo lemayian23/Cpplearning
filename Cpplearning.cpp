@@ -829,7 +829,7 @@ public:
 		return MyClass(value + obj.value);
 	}
 };
-*/
+
 
 //overloading the + operator
 #include<iostream>
@@ -854,5 +854,32 @@ int main() {
 	Complex c1(3.0, 2.0), c2(1.5, 4.5);
 	Complex c3 = c1 + c2;
 	c3.display();
+	return 0;
+}
+*/
+
+//Demonstrating runtime polymorphism
+
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+	virtual void sound() {
+		cout << "Animal sound" << endl;
+	}
+};
+
+class Cat : public Animal {
+public:
+	void sound() override {
+		cout << "Meow" << endl;
+	}
+};
+
+int main() {
+	Animal* a = new Cat();
+	a->sound(); // Outputs "Meow" (dynamic binding)
+	delete a;
 	return 0;
 }
